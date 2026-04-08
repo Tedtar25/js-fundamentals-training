@@ -12,7 +12,7 @@ const tasks = [
 
 const newTask = { id: 3, title: "Reforzar estudio", completed: false }
 
-console.log(addTask(tasks, newTask))
-console.log(getTasks(tasks))
-console.log(deleteTask(tasks, 2))
-console.log(completeTask(tasks, 3))
+console.log("Agregar tarea:", addTask(tasks, newTask))
+console.log("Obtener tareas:", getTasks(tasks))
+console.log("Eliminar tarea:", deleteTask(tasks, 2))
+console.log("Completar tarea:", completeTask(tasks, 3))
