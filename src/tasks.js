@@ -1,23 +1,12 @@
-const tasks = [
-    { id: 1, title: "Estudiar arrays", completed: false },
-    { id: 2, title: "Practicar Git", completed: true }
-]
-
-const newTask = { id: 3, title: "Reforzar estudio", completed: false }
 
 function addTask(tasks, newTask) {
     tasks.push(newTask)
     return tasks
 }
 
-console.log(addTask(tasks, newTask))
-
 function getTasks(tasks) {
     return tasks
 }
-
-console.log(getTasks(tasks))
-
 
 function deleteTask(tasks, id) {
     for (let i = 0; i < tasks.length; i++) {
@@ -29,9 +18,6 @@ function deleteTask(tasks, id) {
     return tasks
 }
 
-console.log(deleteTask(tasks, 2))
-
-
 function completeTask(tasks, id) {
     for (let i = 0; i < tasks.length; i++) {
         if (tasks[i].id === id) {
@@ -42,5 +28,9 @@ function completeTask(tasks, id) {
     return tasks
 }
 
-console.log(completeTask(tasks, 3))
-
+module.exports = {
+    addTask,
+    getTasks,
+    deleteTask,
+    completeTask
+}
