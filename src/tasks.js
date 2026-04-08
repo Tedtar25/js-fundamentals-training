@@ -8,6 +8,16 @@ function getTasks(tasks) {
     return tasks
 }
 
+function getTaskById(tasks, id) {
+    for (let i = 0; i < tasks.length; i++) {
+        if (tasks[i].id === id) {
+            return tasks[i]
+        }
+    }
+    console.log("No se encontró la tarea con el id:", id)
+    return null
+}
+
 function deleteTask(tasks, id) {
     for (let i = 0; i < tasks.length; i++) {
         if (tasks[i].id === id) {
@@ -23,6 +33,8 @@ function completeTask(tasks, id) {
         if (tasks[i].id === id) {
             tasks[i].completed = true
             return tasks
+        } else {
+            return null
         }
     }
     return tasks
@@ -32,5 +44,6 @@ module.exports = {
     addTask,
     getTasks,
     deleteTask,
-    completeTask
+    completeTask,
+    getTaskById
 }

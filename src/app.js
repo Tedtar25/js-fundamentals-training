@@ -2,7 +2,8 @@ const {
     addTask,
     getTasks,
     deleteTask,
-    completeTask
+    completeTask,
+    getTaskById
 } = require('./tasks')
 
 const tasks = [
@@ -16,3 +17,4 @@ console.log("Agregar tarea:", addTask(tasks, newTask))
 console.log("Obtener tareas:", getTasks(tasks))
 console.log("Eliminar tarea:", deleteTask(tasks, 2))
 console.log("Completar tarea:", completeTask(tasks, 3))
+console.log("La tarea con el id #1 es:", getTaskById(tasks, 1))
