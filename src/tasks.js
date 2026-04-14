@@ -14,7 +14,6 @@ function getTaskById(tasks, id) {
             return tasks[i]
         }
     }
-    console.log("No se encontró la tarea con el id:", id)
     return null
 }
 
