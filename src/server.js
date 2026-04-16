@@ -7,7 +7,8 @@ app.use(express.json())
 
 const tasks = [
     { id: 1, title: "Estudiar arrays", completed: false },
-    { id: 2, title: "Practicar Git", completed: true }
+    { id: 2, title: "Practicar Git", completed: false },
+    { id: 3, title: "Leer documentación de Express", completed: false }
 ]
 
 app.get('/', (req, res) => {
@@ -29,6 +30,31 @@ app.get('/tasks/:id', (req, res) => {
     return res.status(404).json({ message: 'Tarea no encontrada' })
 })
 
+/*
+app.post('/tasks', (req, res) => {
+    const { id, title, completed } = req.body
+    if (typeof id !== 'number' || typeof title !== 'string') {
+        return res.status(400).json({ message: 'Faltan datos' })
+    } else {
+
+    }
+})
+*/
+
+/*
+app.post('/tasks', (req, res) => {
+    const { id, title, completed } = req.body
+
+    if (Number.isNaN(id) || String.toString(title) === "undefined") {
+        return res.status(400).json({ message: 'Faltan datos' })
+    } else {
+        res.status(201).json(addTask(tasks, { id, title, completed: completed || false }))
+    }
+
+})
+*/
+
+/*
 app.post('/tasks', (req, res) => {
     const newTask = req.body
 
@@ -38,6 +64,19 @@ app.post('/tasks', (req, res) => {
 
     const updatedTasks = addTask(tasks, newTask)
     return res.status(201).json(updatedTasks)
+})
+*/
+
+app.post('/tasks', (req, res) => {
+    const { id, title, completed } = req.body
+
+    const idValidation = typeof id === 'number' && !Number.isNaN(id)
+    const titleValidation = typeof title === 'string' && title.trim() !== ''
+
+    if (!idValidation || !titleValidation) {
+        return res.status(400).json({ message: 'Datos inválidos' })
+    }
+    return res.status(201).json(addTask(tasks, { id, title, completed: completed || false }))
 })
 
 app.delete('/tasks/:id', (req, res) => {

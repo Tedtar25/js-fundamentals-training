@@ -31,6 +31,17 @@ function completeTask(tasks, id) {
     for (let i = 0; i < tasks.length; i++) {
         if (tasks[i].id === id) {
             tasks[i].completed = true
+            return tasks[i]
+        }
+    }
+    return null
+}
+
+/*
+function completeTask(tasks, id) {
+    for (let i = 0; i < tasks.length; i++) {
+        if (tasks[i].id === id) {
+            tasks[i].completed = true
             return tasks
         } else {
             return null
@@ -38,6 +49,7 @@ function completeTask(tasks, id) {
     }
     return tasks
 }
+*/
 
 module.exports = {
     addTask,
