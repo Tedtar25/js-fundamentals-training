@@ -67,6 +67,7 @@ app.post('/tasks', (req, res) => {
 })
 */
 
+/*
 app.post('/tasks', (req, res) => {
     const { id, title, completed } = req.body
 
@@ -77,6 +78,21 @@ app.post('/tasks', (req, res) => {
         return res.status(400).json({ message: 'Datos inválidos' })
     }
     return res.status(201).json(addTask(tasks, { id, title, completed: completed || false }))
+})
+*/
+
+app.post('/tasks', (req, res) => {
+    const { id, title } = req.body
+
+    const idValidation = typeof id === 'number' && !Number.isNaN(id)
+    const titleValidation = typeof title === 'string' && title.trim() !== ''
+
+    if (!idValidation || !titleValidation) {
+        return res.status(400).json({ message: 'Datos inválidos' })
+    }
+
+    return res.status(201).json(addTask(tasks, { id, title, completed: false }))
+
 })
 
 app.delete('/tasks/:id', (req, res) => {
