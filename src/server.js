@@ -30,56 +30,6 @@ app.get('/tasks/:id', (req, res) => {
     return res.status(404).json({ message: 'Tarea no encontrada' })
 })
 
-/*
-app.post('/tasks', (req, res) => {
-    const { id, title, completed } = req.body
-    if (typeof id !== 'number' || typeof title !== 'string') {
-        return res.status(400).json({ message: 'Faltan datos' })
-    } else {
-
-    }
-})
-*/
-
-/*
-app.post('/tasks', (req, res) => {
-    const { id, title, completed } = req.body
-
-    if (Number.isNaN(id) || String.toString(title) === "undefined") {
-        return res.status(400).json({ message: 'Faltan datos' })
-    } else {
-        res.status(201).json(addTask(tasks, { id, title, completed: completed || false }))
-    }
-
-})
-*/
-
-/*
-app.post('/tasks', (req, res) => {
-    const newTask = req.body
-
-    if (!newTask.id || !newTask.title) {
-        return res.status(400).json({ message: 'Faltan datos' })
-    }
-
-    const updatedTasks = addTask(tasks, newTask)
-    return res.status(201).json(updatedTasks)
-})
-*/
-
-/*
-app.post('/tasks', (req, res) => {
-    const { id, title, completed } = req.body
-
-    const idValidation = typeof id === 'number' && !Number.isNaN(id)
-    const titleValidation = typeof title === 'string' && title.trim() !== ''
-
-    if (!idValidation || !titleValidation) {
-        return res.status(400).json({ message: 'Datos inválidos' })
-    }
-    return res.status(201).json(addTask(tasks, { id, title, completed: completed || false }))
-})
-*/
 
 app.post('/tasks', (req, res) => {
     const { id, title } = req.body

@@ -1,7 +1,13 @@
-
+/*
 function addTask(tasks, newTask) {
     tasks.push(newTask)
     return tasks
+}
+*/
+
+function addTask(tasks, newTask) {
+    tasks.push(newTask)
+    return newTask
 }
 
 function getTasks(tasks) {
