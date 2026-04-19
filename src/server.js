@@ -1,5 +1,5 @@
 const express = require('express')
-const { getTasks, getTaskById, addTask, deleteTask, completeTask } = require('./tasks')
+const { getTasks, getTaskById, addTask, deleteTask, completeTask, idValidation, titleValidation } = require('./tasks')
 
 const app = express()
 
@@ -34,10 +34,7 @@ app.get('/tasks/:id', (req, res) => {
 app.post('/tasks', (req, res) => {
     const { id, title } = req.body
 
-    const idValidation = typeof id === 'number' && !Number.isNaN(id)
-    const titleValidation = typeof title === 'string' && title.trim() !== ''
-
-    if (!idValidation || !titleValidation) {
+    if (!idValidation(id) || !titleValidation(title)) {
         return res.status(400).json({ message: 'Datos inválidos' })
     }
 

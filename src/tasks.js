@@ -43,24 +43,20 @@ function completeTask(tasks, id) {
     return null
 }
 
-/*
-function completeTask(tasks, id) {
-    for (let i = 0; i < tasks.length; i++) {
-        if (tasks[i].id === id) {
-            tasks[i].completed = true
-            return tasks
-        } else {
-            return null
-        }
-    }
-    return tasks
+function idValidation(id) {
+    return typeof id === 'number' && !Number.isNaN(id) && id > 0
 }
-*/
+
+function titleValidation(title) {
+    return typeof title === 'string' && title.trim() !== ''
+}
 
 module.exports = {
     addTask,
     getTasks,
     deleteTask,
     completeTask,
-    getTaskById
+    getTaskById,
+    idValidation,
+    titleValidation
 }
