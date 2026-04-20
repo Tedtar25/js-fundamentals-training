@@ -1,5 +1,5 @@
 const express = require('express')
-const { getTasks, getTaskById, addTask, deleteTask, completeTask, idValidation, titleValidation/*, isIdUnique*/ } = require('./tasks')
+const { getTasks, getTaskById, addTask, deleteTask, completeTask, idValidation, titleValidation } = require('./tasks')
 
 const app = express()
 
@@ -66,29 +66,19 @@ app.delete('/tasks/:id', (req, res) => {
     return res.status(200).json(updatedTasks)
 })
 
-/*
-app.delete('/tasks/:id', (req, res) => {
-    const id = Number(req.params.id)
-    const task = getTaskById(tasks, id)
-
-    if (!task) {
-        return res.status(404).json({ message: 'Tarea no encontrada' })
-    }
-
-    const updatedTasks = deleteTask(tasks, id)
-    return res.status(200).json(updatedTasks)
-})
-*/
-
 app.put('/tasks/:id', (req, res) => {
     const id = Number(req.params.id)
-    const task = getTaskById(tasks, id)
+    if (!idValidation(id)) {
+        return res.status(400).json({ message: 'ID invalido' })
+    }
 
+    const task = getTaskById(tasks, id)
     if (!task) {
         return res.status(404).json({ message: 'Tarea no encontrada' })
     }
 
     const updatedTasks = completeTask(tasks, id)
+
     return res.status(200).json(updatedTasks)
 })
 
