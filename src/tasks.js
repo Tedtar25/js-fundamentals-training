@@ -19,8 +19,7 @@ function getTaskById(tasks, id) {
 function deleteTask(tasks, id) {
     for (let i = 0; i < tasks.length; i++) {
         if (tasks[i].id === id) {
-            tasks.splice(i, 1)
-            return tasks
+            return tasks.splice(i, 1)
         }
     }
     return tasks

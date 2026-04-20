@@ -23,6 +23,10 @@ app.get('/tasks/:id', (req, res) => {
     const id = Number(req.params.id)
     const task = getTaskById(tasks, id)
 
+    if (!idValidation(id)) {
+        return res.status(400).json({ message: 'ID inválido' })
+    }
+
     if (task) {
         return res.status(200).json(task)
     }
@@ -50,6 +54,10 @@ app.delete('/tasks/:id', (req, res) => {
     const id = Number(req.params.id)
     const task = getTaskById(tasks, id)
 
+    if (!idValidation(id)) {
+        return res.status(400).json({ message: 'ID invalido' })
+    }
+
     if (!task) {
         return res.status(404).json({ message: 'Tarea no encontrada' })
     }
@@ -57,6 +65,20 @@ app.delete('/tasks/:id', (req, res) => {
     const updatedTasks = deleteTask(tasks, id)
     return res.status(200).json(updatedTasks)
 })
+
+/*
+app.delete('/tasks/:id', (req, res) => {
+    const id = Number(req.params.id)
+    const task = getTaskById(tasks, id)
+
+    if (!task) {
+        return res.status(404).json({ message: 'Tarea no encontrada' })
+    }
+
+    const updatedTasks = deleteTask(tasks, id)
+    return res.status(200).json(updatedTasks)
+})
+*/
 
 app.put('/tasks/:id', (req, res) => {
     const id = Number(req.params.id)
