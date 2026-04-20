@@ -1,10 +1,3 @@
-/*
-function addTask(tasks, newTask) {
-    tasks.push(newTask)
-    return tasks
-}
-*/
-
 function addTask(tasks, newTask) {
     tasks.push(newTask)
     return newTask
@@ -51,6 +44,17 @@ function titleValidation(title) {
     return typeof title === 'string' && title.trim() !== ''
 }
 
+/*
+function isIdUnique(tasks, id) {
+    for (let i = 0; i < tasks.length; i++) {
+        if (tasks[i].id === id) {
+            return false
+        }
+        return true
+    }
+}
+*/
+
 module.exports = {
     addTask,
     getTasks,
@@ -59,4 +63,5 @@ module.exports = {
     getTaskById,
     idValidation,
     titleValidation
+    //isIdUnique
 }

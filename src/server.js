@@ -1,5 +1,5 @@
 const express = require('express')
-const { getTasks, getTaskById, addTask, deleteTask, completeTask, idValidation, titleValidation } = require('./tasks')
+const { getTasks, getTaskById, addTask, deleteTask, completeTask, idValidation, titleValidation/*, isIdUnique*/ } = require('./tasks')
 
 const app = express()
 
@@ -36,6 +36,10 @@ app.post('/tasks', (req, res) => {
 
     if (!idValidation(id) || !titleValidation(title)) {
         return res.status(400).json({ message: 'Datos inválidos' })
+    }
+
+    if (getTaskById(tasks, id)) {
+        return res.status(409).json({ message: 'ID ya existe' })
     }
 
     return res.status(201).json(addTask(tasks, { id, title, completed: false }))
