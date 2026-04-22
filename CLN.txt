@@ -1,0 +1,7 @@
+Aqui estaran todos los comandos de node para la creacion del proyecto.
+
+1.-
+    npm init -y
+
+2.-
+    npm i express

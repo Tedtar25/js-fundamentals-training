@@ -1,0 +1,24 @@
+{
+  "name": "js-chat-tutor",
+  "version": "1.0.0",
+  "description": "Ejercicios básicos de JavaScript enfocados en:",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Tedtar25/js-fundamentals-training.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/Tedtar25/js-fundamentals-training/issues"
+  },
+  "homepage": "https://github.com/Tedtar25/js-fundamentals-training#readme",
+  "dependencies": {
+    "express": "^5.2.1"
+  }
+}
