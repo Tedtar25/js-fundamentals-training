@@ -1,5 +1,5 @@
-import { getAllTasks, getTaskById, addTask, completeTask, deleteTask } from '../services/tasks.service.js'
-import { isIdValid, isTitleValid } from '../validators/tasks.validator.js'
+import { getAllTasks, getTaskById, addTask, completeTask, deleteTask } from '../services/task.service.js'
+import { isIdValid, isTitleValid } from '../validators/task.validator.js'
 
 function getTasksHandler(req, res) {
     return res.status(200).json(getAllTasks())
