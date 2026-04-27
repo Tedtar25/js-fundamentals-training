@@ -4,11 +4,11 @@ const tasks = [
     { id: 3, title: "Leer documentación de Express", completed: false }
 ]
 
-function getAllTasks(tasks) {
+function getAllTasks() {
     return tasks
 }
 
-function getTaskById(tasks, id) {
+function getTaskById(id) {
     for (let i = 0; i < tasks.length; i++) {
         if (tasks[i].id === id) {
             return tasks[i]
@@ -17,12 +17,12 @@ function getTaskById(tasks, id) {
     return null
 }
 
-function addTask(tasks, newTask) {
+function addTask(newTask) {
     tasks.push(newTask)
     return newTask
 }
 
-function completeTask(tasks, id) {
+function completeTask(id) {
     for (let i = 0; i < tasks.length; i++) {
         if (tasks[i].id === id) {
             tasks[i].completed = true
@@ -32,16 +32,18 @@ function completeTask(tasks, id) {
     return null
 }
 
-function deleteTask(tasks, id) {
+function deleteTask(id) {
     for (let i = 0; i < tasks.length; i++) {
         if (tasks[i].id === id) {
-            return tasks.splice(i, 1)
+            const deletedTask = tasks[i]
+            tasks.splice(i, 1)
+            return deletedTask
         }
     }
-    return tasks
+    return null
 }
 
-module.exports = {
+export {
     getAllTasks,
     getTaskById,
     addTask,

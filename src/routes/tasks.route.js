@@ -1,72 +1,37 @@
-const { isIdValid, isTitleValid } = require("../validators/tasks.validator")
+import { Router } from "express";
+import { getTasksHandler, getTaskByIdHandler, createTaskHandler, deleteTaskHandler, completeTaskHandler } from "../controllers/tasks.controller.js";
 
-app.get('/', (req, res) => {
-    res.status(200).send('Servidor funcionando')
-})
+const router = Router()
+
+router.get('/tasks', getTasksHandler)
+router.get('/tasks/:id', getTaskByIdHandler)
+router.post('/tasks', createTaskHandler)
+router.delete('/tasks/:id', deleteTaskHandler)
+router.put('/tasks/:id', completeTaskHandler)
+
+export { router }
+
+/*
 
 app.get('/tasks', (req, res) => {
-    res.status(200).json(getAllTasks(tasks))
+    getTasksHandler(req, res)
 })
 
 app.get('/tasks/:id', (req, res) => {
-    const id = Number(req.params.id)
-    const task = getTaskById(tasks, id)
-
-    if (!isIdValid(id)) {
-        return res.status(400).json({ message: 'ID inválido' })
-    }
-
-    if (task) {
-        return res.status(200).json(task)
-    }
-
-    return res.status(404).json({ message: 'Tarea no encontrada' })
+    getTaskByIdHandler(req, res)
 })
 
 
 app.post('/tasks', (req, res) => {
-    const { id, title } = req.body
-
-    if (!isIdValid(id) || !isTitleValid(title)) {
-        return res.status(400).json({ message: 'Datos inválidos' })
-    }
-
-    if (getTaskById(tasks, id)) {
-        return res.status(409).json({ message: 'ID ya existe' })
-    }
-
-    return res.status(201).json(addTask(tasks, { id, title, completed: false }))
-
+    createTaskHandler(req, res)
 })
 
 app.delete('/tasks/:id', (req, res) => {
-    const id = Number(req.params.id)
-    const task = getTaskById(tasks, id)
-
-    if (!isIdValid(id)) {
-        return res.status(400).json({ message: 'ID invalido' })
-    }
-
-    if (!task) {
-        return res.status(404).json({ message: 'Tarea no encontrada' })
-    }
-
-    const updatedTasks = deleteTask(tasks, id)
-    return res.status(200).json(updatedTasks)
+    deleteTaskHandler(req, res)
 })
 
 app.put('/tasks/:id', (req, res) => {
-    const id = Number(req.params.id)
-    if (!isIdValid(id)) {
-        return res.status(400).json({ message: 'ID invalido' })
-    }
-
-    const task = getTaskById(tasks, id)
-    if (!task) {
-        return res.status(404).json({ message: 'Tarea no encontrada' })
-    }
-
-    const updatedTasks = completeTask(tasks, id)
-
-    return res.status(200).json(updatedTasks)
+    completeTaskHandler(req, res)
 })
+
+*/
