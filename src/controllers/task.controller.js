@@ -22,6 +22,19 @@ function getTaskByIdHandler(req, res) {
 }
 
 function createTaskHandler(req, res) {
+    const title = req.body.title
+
+    if (!isTitleValid(title)) {
+        return res.status(400).json({ message: 'Datos Invalidos' })
+    }
+
+    const newTask = addTask(title)
+
+    return res.status(201).json(newTask)
+}
+
+/*
+function createTaskHandler(req, res) {
     const { id, title } = req.body
 
     if (!isIdValid(id) || !isTitleValid(title)) {
@@ -38,21 +51,23 @@ function createTaskHandler(req, res) {
 
     return res.status(201).json(newTask)
 }
+*/
 
 function deleteTaskHandler(req, res) {
     const id = Number(req.params.id)
-    const task = getTaskById(id)
 
     if (!isIdValid(id)) {
         return res.status(400).json({ message: 'ID invalido' })
     }
 
+    const task = getTaskById(id)
+
     if (!task) {
         return res.status(404).json({ message: 'Tarea no encontrada' })
     }
 
-    const updatedTasks = deleteTask(id)
-    return res.status(200).json(updatedTasks)
+    const taskToDelete = deleteTask(id)
+    return res.status(200).json(taskToDelete)
 }
 
 function completeTaskHandler(req, res) {

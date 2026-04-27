@@ -17,7 +17,20 @@ function getTaskById(id) {
     return null
 }
 
-function addTask(newTask) {
+function generateNextId(tasks) {
+    if (tasks.length === 0) {
+        return 1
+    }
+    return tasks[tasks.length - 1].id + 1
+}
+
+function addTask(title) {
+
+    const newTask = {
+        id: generateNextId(tasks),
+        title,
+        completed: false
+    }
     tasks.push(newTask)
     return newTask
 }
