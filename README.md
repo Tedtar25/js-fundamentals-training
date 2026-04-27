@@ -6,6 +6,8 @@ Lo considero como un hijo, porque lo he empezado desde cero, con la IA como tuto
 
 También puede servir para quienes sienten que en la universidad solo se ven los temas por encima y no se profundiza tanto. Además, muchas veces te obligan a usar la IA solo para cumplir y obtener una calificación, porque piden cosas en muy poco tiempo.
 
+Tengo la intencion de crecer este repositorio para aprender a complementar con bases de datos, contenedores de Docker a futuro e incluso ver si se hace el cambio a librerias o frameworks como Nest.js
+
 ## Métodos de arrays
 
 Aunque leer la documentación puede ser tardado, se recomienda revisarla al menos para darse una idea general, ya que durante el proyecto se utilizan métodos como:
