@@ -6,7 +6,7 @@ function isTitleValid(title) {
     return typeof title === 'string' && title.trim() !== ''
 }
 
-module.exports = {
+export {
     isIdValid,
     isTitleValid
 }

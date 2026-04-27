@@ -1,9 +1,15 @@
-const express = require('express')
-const { getTasks, getTaskById, addTask, deleteTask, completeTask, idValidation, titleValidation } = require('./tasks')
+import express from 'express'
+import router from './routes/tasks.route.js'
 
 const app = express()
 
 app.use(express.json())
+
+app.get('/', (req, res) => {
+    res.status(200).json({ message: 'Servidor corriendo' })
+})
+
+app.use('/api', router)
 
 app.listen(3000, () => {
     console.log('Servidor corriendo en http://localhost:3000')
